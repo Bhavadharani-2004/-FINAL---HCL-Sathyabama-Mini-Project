@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex; /* Use Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Full height of the viewport */
+            margin: 0; /* Remove default margin */
+            background-image: url('https://media.istockphoto.com/id/1671592188/photo/global-network-security.jpg?s=2048x2048&w=is&k=20&c=Laf6TH6Enb9lcLvRy6W8aSj9-oIF2Sw2rt9Ke64ldk0='); /* Background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+        }
+        .login-container {
+            background-color: rgba(173, 216, 230, 0.9); /* Light blue with transparency */
+            padding: 40px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: 400px; /* Fixed width for the form */
+            text-align: center; /* Center text */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        label {
+            display: block; /* Block display for labels */
+            margin-bottom: 5px; /* Space below labels */
+            text-align: left; /* Align labels to the left */
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%; /* Full width inputs */
+            padding: 10px; /* Padding for inputs */
+            margin-bottom: 20px; /* Space below inputs */
+            border: 1px solid #ccc; /* Border for inputs */
+            border-radius: 5px; /* Rounded corners for inputs */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        button {
+            background-color: #007bff; /* Blue background color for the button */
+            color: white; /* White text for the button */
+            padding: 10px; /* Padding for the button */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners for button */
+            cursor: pointer; /* Pointer cursor on hover */
+            width: 100%; /* Full width button */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .error-message {
+            color: red; /* Red color for error messages */
+            margin-top: 10px; /* Space above error message */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+            <p class="error-message" id="error-message"></p> <!-- Error message placeholder -->
+        </form>
+    </div>
+</body>
+</html>

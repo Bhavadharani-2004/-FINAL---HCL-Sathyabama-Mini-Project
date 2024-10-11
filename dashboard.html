@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tax Calculators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex; /* Use Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Full height of the viewport */
+            background-image: url('https://wallpaperaccess.com/full/9622877.png');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            margin: 0; /* Remove default margin */
+            background-color: #f4f4f4; /* Light background color */
+        }
+        .container {
+            text-align: center; /* Center text */
+            background-color: white; /* White background for the dashboard */
+            padding: 40px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: 400px; /* Fixed width for the container */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        .calculator-option {
+            margin: 20px 0; /* Space between options */
+            padding: 10px;
+            border: 1px solid #007bff; /* Border color for options */
+            border-radius: 5px; /* Rounded corners for options */
+            cursor: pointer; /* Pointer cursor on hover */
+            background-color: #f0f8ff; /* Light blue background */
+            transition: background-color 0.3s; /* Transition for hover effect */
+        }
+        .calculator-option:hover {
+            background-color: #e0f0ff; /* Slightly darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <h2>Select a Tax Calculator</h2>
+
+        <div class="calculator-option" onclick="location.href='income-calculator.html';">
+            Income Tax Calculator
+        </div>
+
+        <div class="calculator-option" onclick="location.href='wealth-calculator.html';">
+            Wealth Tax Calculator
+        </div>
+
+        <div class="calculator-option" onclick="location.href='property-calculator.html';">
+            Property Tax Calculator
+        </div>
+
+        <div class="calculator-option" onclick="location.href='service-calculator.html';">
+            Service Tax Calculator
+        </div>
+
+        <div class="calculator-option" onclick="location.href='gst-calculator.html';">
+            Goods and Services Tax Calculator
+        </div>
+        <div class="tax-option">
+            <a href="stored-taxes.html"><i class="fas fa-file-invoice-dollar icon"></i>Stored Calculated Taxes</a>
+        
+        </div>
+    </div>
+</body>
+</html>
+

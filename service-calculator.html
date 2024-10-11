@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Tax Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://swall.teahub.io/photos/small/234-2346901_wallpaper-background-solid-glare-light-color-double-colour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: purple;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            background-color: lavender;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: 500;
+            color: #666;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px; /* Uniform margin for spacing */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            margin-top: 20px; /* Space above the button container */
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Service Tax Calculator</h1>
+        <label for="service-amount">Enter Service Amount (₹):</label>
+        <input type="number" id="service-amount" placeholder="e.g., 5000" required>
+
+        <label for="service-deduction">Enter Deductions (₹):</label>
+        <input type="number" id="service-deduction" placeholder="e.g., 1000">
+
+        <label for="service-tax-rate">Enter Service Tax Rate (in %):</label>
+        <input type="number" id="service-tax-rate" placeholder="e.g., 15" required>
+
+        <div class="button-container">
+            <button onclick="calculateServiceTax()">Calculate Service Tax</button>
+            <button onclick="saveTax()" id="save-button" style="display:none;">Save</button>
+        </div>
+        <button onclick="goBack()" style="font-size: small;">Back to Dashboard</button> <!-- Back button added -->
+        <p id="service-result"></p>
+    </div>
+    <script>
+        let lastCalculatedTax = 0;
+
+        function calculateServiceTax() {
+            const serviceAmount = parseFloat(document.getElementById('service-amount').value);
+            const serviceDeduction = parseFloat(document.getElementById('service-deduction').value) || 0;
+            const taxableServiceAmount = serviceAmount - serviceDeduction;
+            const serviceTaxRate = parseFloat(document.getElementById('service-tax-rate').value) / 100;
+            const tax = taxableServiceAmount * serviceTaxRate;
+
+            lastCalculatedTax = tax; // Store the last calculated service tax
+            document.getElementById('service-result').innerText = `Your estimated service tax is: ₹${tax.toFixed(2)}`;
+            document.getElementById('save-button').style.display = 'block'; // Show save button
+        }
+
+        function saveTax() {
+            if (lastCalculatedTax > 0) {
+                const storedTaxes = JSON.parse(localStorage.getItem('calculatedTaxes')) || [];
+                storedTaxes.push({ type: "Service Tax", amount: lastCalculatedTax.toFixed(2) });
+                localStorage.setItem('calculatedTaxes', JSON.stringify(storedTaxes));
+                alert('Tax calculation saved successfully!');
+            } else {
+                alert('Please calculate tax before saving.');
+            }
+        }
+
+        function goBack() {
+            window.location.href = 'dashboard.html'; // Change 'dashboard.html' to your actual dashboard file name
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

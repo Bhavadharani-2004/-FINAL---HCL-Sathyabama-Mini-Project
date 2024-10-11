@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goods and Services Tax (GST) Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://swall.teahub.io/photos/small/234-2346901_wallpaper-background-solid-glare-light-color-double-colour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: purple;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            background-color: lavender;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: 500;
+            color: #666;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px; /* Uniform margin for spacing */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            margin-top: 20px; /* Space above the button container */
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GST Calculator</h1>
+        <label for="amount">Enter Amount (INR):</label>
+        <input type="number" id="amount" placeholder="e.g., 1000" required>
+
+        <label for="gst-rate">Enter GST Rate (in %):</label>
+        <input type="number" id="gst-rate" placeholder="e.g., 18" required>
+
+        <div class="button-container">
+            <button onclick="calculateGST()">Calculate GST</button>
+            <button onclick="saveGST()" id="save-button" style="display:none;">Save</button>
+        </div>
+        <button onclick="goBack()" style="font-size: small;">Back to Dashboard</button> <!-- Back button added -->
+        <p id="gst-result"></p>
+    </div>
+    <script>
+        let calculatedGST = null; // Store the last calculated GST object
+
+        function calculateGST() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const gstRate = parseFloat(document.getElementById('gst-rate').value) / 100;
+            const gst = amount * gstRate;
+
+            calculatedGST = { type: "GST", amount: gst.toFixed(2) }; // Create an object for GST
+            document.getElementById('gst-result').innerText = `GST Amount: ₹${gst.toFixed(2)}`;
+            document.getElementById('save-button').style.display = 'block'; // Show save button
+        }
+
+        function saveGST() {
+            if (!calculatedGST) {
+                alert("No GST calculation available to save.");
+                return;
+            }
+            const storedTaxes = JSON.parse(localStorage.getItem('calculatedTaxes')) || [];
+            storedTaxes.push(calculatedGST);
+            localStorage.setItem('calculatedTaxes', JSON.stringify(storedTaxes));
+            alert("GST calculation saved successfully!");
+        }
+
+        function goBack() {
+            window.location.href = 'dashboard.html'; // Change 'dashboard.html' to your actual dashboard file name
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
